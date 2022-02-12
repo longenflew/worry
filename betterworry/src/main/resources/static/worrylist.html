@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>工单列表</title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <link rel="stylesheet" href="layui/css/layui.css" media="all"/>
+</head>
+
+<body>
+<br/>
+
+<div class="layui-container ultra-layout">
+    <br/>
+
+
+    <div class="layui-fluid ultra-card layui-container" style="padding: 0">
+        <div class="layui-row layui-col-space5" style="margin-bottom: 10px">
+            <ul class="layui-nav layui-bg-cyan">
+                <li class="layui-nav-item">
+                    <a id="href_search" href="./search.html">工单查询</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a id="href_analysis" href="./analysis.html"> 工单分析</a>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="">工单列表</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a id="href_similarworry" href="./similarworry.html">相似工单</a>
+                </li>
+            </ul>
+
+            <div
+                    class="layui-col-md6"
+                    id="demandCondition"
+                    style="background-color: #f5f5f5"
+            >
+                <br/>
+                <div
+                        style="
+                float: left;
+                display: inline-block;
+                padding: 10px;
+                background-color: #f2f2f2;
+
+                width: 550px;
+              "
+                >
+                    <span class="layui-badge-rim ">处理人：</span>
+                    <div class="layui-badge-rim " id="personlist"></div>
+                    <br/>
+                    <br/>
+                    <div id="body_worry">
+                        <div class="layui-col-md12">
+                            <div class="layui-card" style="padding: 10px">
+                                <h2>工单标题：</h2>
+                                <div class="layui-card-header" id="processTitle" style="height:auto"></div>
+                                <h3>工单内容：</h3>
+                                <div class="layui-card-body" id="content"
+                                     style="max-height:500px;overflow:scroll"></div>
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space15">
+                            <h3>工单流水：</h3>
+                            <ul class="layui-timeline" id="stream">
+                                <li class="layui-timeline-item">
+                                    <i class="layui-icon layui-timeline-axis"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <h3 class="layui-timeline-title"></h3>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <a id="oop">查看原工单</a>
+                </div>
+            </div>
+
+            <div class="layui-col-md1" style="background-color: #f5f5f5">
+                <br/>
+            </div>
+
+            <div class="layui-col-md5" style="background-color: #f5f5f5">
+                <br/>
+                <form class="layui-form" action="" lay-filter="example">
+                    <div class="layui-form-item">
+                        <div class="layui-inline" style="margin-left: -20px;">
+                            <label class="layui-form-label">工单透视</label>
+                            <div class="layui-input-block">
+                                <input
+                                        type="checkbox"
+                                        name="close"
+                                        lay-skin="switch"
+                                        lay-text="ON|OFF"
+                                        id="contentsegbt"
+                                />
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <a id="findsimilarh" href="/worrysingle/metamon" target="_blank"
+                            >
+                                <button
+                                        type="button"
+                                        id="findsimilarbt"
+                                        class="layui-btn layui-btn-sm"
+                                >
+                                    找出相似工单
+                                </button>
+                            </a
+                            >
+                        </div>
+                        <div class="layui-inline">
+                            <button
+                                    type="button"
+                                    class="layui-btn layui-btn-sm layui-icon layui-icon-survey"
+                                    id="btn_guessworrylist"
+                            >
+                                猜想工单类别
+                            </button>
+                        </div>
+
+                        <div class="layui-inline">
+                            <a id="out" href="worryoutput" target="_blank">
+                                <button
+                                        type="button"
+                                        class="layui-btn layui-btn-sm layui-icon layui-icon-export"
+                                >
+                                    文件导出
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+
+                <br/>
+
+                <table
+                        style="width: 400px"
+                        class="layui-hide"
+                        lay-data="{id: 'processId'}"
+                        id="worrylist"
+                        lay-filter="worrylist"
+                ></table>
+
+                <div id="worrypage" style="width: 400px"></div>
+                <div class="layui-form-item">
+                    <form class="layui-form ultra-form3" lay-filter="worrycategory">
+                        <label class="layui-form-label" style="width: 520px"></label>
+                        <div class="layui-input-block">
+                            <label class="layui-form-label" style="margin-left: -108px"
+                            >问题类别:</label
+                            >
+                            <div class="layui-input-inline">
+                                <select
+                                        name="categorytype"
+                                        id="categorytype"
+                                        onclick="worryset()"
+                                        lay-filter="categorytype"
+                                >
+                                    <option value="11">未知问题</option>
+                                    <option value="2">程序BUG问题</option>
+                                    <option value="3">投诉建议</option>
+                                    <option value="4">数据修复类问题</option>
+                                    <option value="6">平台类问题</option>
+                                    <option value="7">重复、无效工单</option>
+                                    <option value="8">参数配置问题</option>
+                                    <option value="9">核查类问题</option>
+                                    <option value="1">业务规范及需求类问题</option>
+                                    <option value="5">操作类问题</option>
+                                    <option value="10">咨询类问题</option>
+                                    <option value="15">非B域问题</option>
+                                </select>
+                            </div>
+
+                            <br/>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label" style="margin-left: -108px"
+                                >高级类别:</label
+                                >
+                                <div class="layui-input-inline">
+                                    <select
+                                            name="supercategory"
+                                            id="supercategory"
+                                            lay-filter="supercategory"
+                                            lay-search=""
+                                    >
+                                        <option value="">直接选择或搜索选择</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <input
+                                    type="text"
+                                    oninput="worryset()"
+                                    id="worryremark"
+                                    name="worryremark"
+                                    lay-verify="title"
+                                    autocomplete="off"
+                                    placeholder="工单备注"
+                                    class="layui-input"
+                                    style="margin-left: -80px"
+                            />
+                        </div>
+                        <br/>
+                        <!-- 下面四个按钮不按也没事 -->
+                        <div>
+
+                            <div
+                                    style="
+                      display: flex;
+                      justify-content: flex-end;
+                      margin-right: 25px;
+                    "
+                            >
+                                <button
+                                        type="button"
+                                        id="btn_guessworrycate"
+                                        class="layui-btn layui-btn-sm "
+                                >猜想当前页的工单类别
+                                </button>
+                                <button
+                                        type="button"
+                                        id="btn_worryfavorites"
+                                        class="layui-btn layui-btn-sm layui-icon layui-icon-star"
+                                ></button>
+
+
+                                <button
+                                        type="button"
+                                        id="btn_worrycomment"
+                                        class="layui-btn layui-btn-sm layui-icon layui-icon-reply-fill"
+                                ></button>
+
+                                <button
+                                        type="submit"
+                                        class="layui-btn layui-btn-sm"
+                                        lay-submit=""
+                                        lay-filter="categorysub"
+                                >
+                                    保存整页
+                                </button>
+                                <button
+                                        type="button"
+                                        class="layui-btn layui-btn-sm"
+                                        onclick="worryset()"
+                                >
+                                    保存当前
+                                </button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="layui/layui.js" charset="utf-8"></script>
+<script src="js/render.js" charset="utf-8"></script>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">
+            获取选中行数据
+        </button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">
+            获取选中数目
+        </button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">
+            验证是否全选
+        </button>
+    </div>
+</script>
+
+<script>
+    var worrys = [];
+    var worrychid = 0;
+    var rowobj;
+    var worryitem;
+    var changed = 0;
+    var supcatype;
+    var worryIndex = -1; //当前选中的工单
+    var worrysptag = 0;
+    var username = "sb"
+    var worryCount=0;
+    var PAGE=1;
+    var LIMIT=10
+    var color="#009688"
+    var init=0;
+    //页面第一次请求 默认 1页  10条
+
+    var categoryname = ["需求类问题", "程序BUG问题", "投诉建议", "数据修复类问题", "操作类问题",
+        "平台类问题", "重复、无效工单", "参数配置问题", "核查类问题", "咨询类问题", "未知问题"];
+
+    var worryComment;
+    var usernameSet;
+    var worryview;
+    var btnStyleBeauty
+
+    //重写分页
+    function worryset() {
+        changed = 1;
+        for (var i = 0; i < worrys.length; i++) {
+            if (worrys[i].processId == worrychid) {
+                worrys[i].worryItem.categorytype = document.getElementById("categorytype").value;
+                worrys[i].worryItem.supercategory = document
+                    .getElementById("supercategory").value;
+                worrys[i].worryItem.remarks = document
+                    .getElementById("worryremark").value;
+                worryitem = worrys[i].worryItem.categorytype;
+                break;
+            }
+        }
+    }
+
+    function pufily(str) {
+        var temp = "";
+        if (str.length == 0) return "";
+        temp = str.replace(/&/g, "&amp;");
+        temp = temp.replace(/</g, "&lt;");
+        temp = temp.replace(/>/g, "&gt;");
+        temp = temp.replace(/\'/g, "&#39;");
+        temp = temp.replace(/\"/g, "&quot;");
+        temp = temp.replace("\n", "<br>");
+        return temp;
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>工单搜索</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="layui/css/layui.css" media="all" />
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+
+    <link rel="stylesheet" href="layui/css/betterworry.css" media="all" />
+</head>
+
+<body>
+    <br/>
+    <div class="layui-container ultra-layout">
+        <br/>
+
+        <div class="layui-fluid ultra-card layui-container" style="padding: 0">
+            <div class="layui-row" style="margin-bottom: 10px">
+                <ul class="layui-nav layui-bg-cyan">
+
+                    <li class="layui-nav-item layui-this">
+                        <a id="href_search" href="">工单查询</a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a id="href_analysis" href="./analysis.html">工单分析</a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a id="href_worrylist" href="">工单列表</a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a id="href_similarworry" href="./similarworry.html">相似工单</a>
+                    </li>
+                </ul>
+                <br/>
+                <div class="layui-col-md12" style="background-color: #f5f5f5">
+                    <br/>
+                    <form class="layui-form ultra-form3" action="worryarr/aoegetworry" lay-filter="searchListFilter" method="post" id="form_search">
+
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">工单分类：</label>
+                                <div class="layui-input-inline">
+                                    <select name="categoryName" id="categoryName" lay-filter="categoryName">
+                                    <option value="" selected="selected">未选择</option>
+                                    <option value="11">未知问题</option>
+                                    <option value="2">程序BUG问题</option>
+                                    <option value="3">投诉建议</option>
+                                    <option value="4">数据修复类问题</option>
+                                    <option value="6">平台类问题</option>
+                                    <option value="7">重复、无效工单</option>
+                                    <option value="8">参数配置问题</option>
+                                    <option value="9">核查类问题</option>
+                                    <option value="1">需求类问题</option>
+                                    <option value="5">操作类问题</option>
+                                    <option value="10">咨询类问题</option>
+                                    <option value="15">非B域问题</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">工单内容：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="content" placeholder="内容关键字" autocomplete="off" class="layui-input" />
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">关键字：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="stream" placeholder="多关键词用空格隔开" autocomplete="off" class="layui-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">编号：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="processKey" placeholder="请输入编号" autocomplete="off" class="layui-input" />
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">标题：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="processTitle" placeholder="请输入标题" autocomplete="off" class="layui-input" />
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">高级类别:</label>
+                                <div class="layui-input-inline">
+                                    <select name="supercategory" id="supercategory" lay-filter="supercategory" lay-search="">
+                                    <option value="">直接选择或搜索选择</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">发起时间：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" name="createTime" id="time" value="" placeholder="选择时间范围" />
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">工单状态：</label>
+                                <div class="layui-input-inline">
+                                    <select name="status" lay-filter="status">
+                                    <option value="" selected="selected">全部</option>
+                                    <option value="0">待处理</option>
+                                    <option value="1">已解决</option>
+                                    <option value="2">已提供解决方案</option>
+                                    <option value="3">未解决</option>
+                                </select>
+                                    <div class="layui-unselect layui-form-select">
+                                        <div class="layui-select-title">
+                                            <input type="text" placeholder="全部" readonly="readonly" class="layui-input layui-unselect" /><i class="layui-edge"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">地域：</label>
+                                <div class="layui-input-inline">
+                                    <div class="layui-input-inline">
+                                        <select name="creatorRegion" lay-filter="provinceCity">
+                                        <option value="" selected="selected">请选择</option>
+                                        <option value="总部">总部</option>
+                                        <option value="内蒙古自治区">内蒙古自治区</option>
+                                        <option value="北京市">北京市</option>
+                                        <option value="天津市">天津市</option>
+                                        <option value="山东省">山东省</option>
+                                        <option value="河北省">河北省</option>
+                                        <option value="山西省">山西省</option>
+                                        <option value="安徽省">安徽省</option>
+                                        <option value="上海市">上海市</option>
+                                        <option value="江苏省">江苏省</option>
+                                        <option value="浙江省">浙江省</option>
+                                        <option value="福建省">福建省</option>
+                                        <option value="海南省">海南省</option>
+                                        <option value="广东省">广东省</option>
+                                        <option value="广西壮族自治区">广西壮族自治区</option>
+                                        <option value="青海省">青海省</option>
+                                        <option value="湖北省">湖北省</option>
+                                        <option value="湖南省">湖南省</option>
+                                        <option value="江西省">江西省</option>
+                                        <option value="河南省">河南省</option>
+                                        <option value="西藏自治区">西藏自治区</option>
+                                        <option value="四川省">四川省</option>
+                                        <option value="重庆市">重庆市</option>
+                                        <option value="陕西省">陕西省</option>
+                                        <option value="贵州省">贵州省</option>
+                                        <option value="云南省">云南省</option>
+                                        <option value="甘肃省">甘肃省</option>
+                                        <option value="宁夏回族自治区">宁夏回族自治区</option>
+                                        <option value="新疆维吾尔自治区">
+                                            新疆维吾尔自治区
+                                        </option>
+                                        <option value="吉林省">吉林省</option>
+                                        <option value="辽宁省">辽宁省</option>
+                                        <option value="黑龙江省">黑龙江省</option>
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item" style="text-align: center;">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">工单类型：</label>
+                                <div class="layui-input-block">
+                                    <input type="radio" name="worryType" value="0" title="事件">
+                                    <input type="radio" name="worryType" value="1" title="问题">
+                                    <input type="radio" name="worryType" value="" title="全部" checked="">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label"> 结果显示：</label>
+                                <div class="layui-input-block">
+                                    <input type="radio" name="viewType" value="worry" title="工单" checked="">
+                                    <input type="radio" name="viewType" value="stream" title="日志">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">处理人：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="username" placeholder="请输入姓名或账号" autocomplete="off" class="layui-input" />
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">处理时间：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" name="handletime" id="handletime" value="" placeholder="选择时间范围" />
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">幸运鹅：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="luckyname" placeholder="输入被处理人或者团队" autocomplete="off" class="layui-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">处理院：</label>
+                                <div class="layui-input-inline">
+                                    <select name="org_id" lay-filter="org_id">
+                                    <option value="" selected="selected">全部</option>
+                                    <option value="00560185693">南京院</option>
+                                    <option value="内蒙古自治区">哈尔滨院</option>
+                                    <option value="北京市">济南院</option>
+                                    <option value="天津市">广州院</option>
+                                </select>
+                                    <div class="layui-unselect layui-form-select">
+                                        <div class="layui-select-title">
+                                            <input type="text" placeholder="全部" readonly="readonly" class="layui-input layui-unselect" /><i class="layui-edge"></i>
+                                        </div>
+                                        <dl class="layui-anim layui-anim-upbit">
+                                            <dd lay-value="" class="layui-select-tips">全部</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">处理团队：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="department" placeholder="多级团队空格限制" autocomplete="off" class="layui-input" />
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">处理方法：</label>
+                                <div class="layui-input-inline">
+                                    <select name="handlename" id="handlename" lay-filter="handlename" lay-search="">
+                                    <option value="">直接选择或搜索选择</option>
+                                </select>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="text-align: right; margin-right: 50px">
+                            </div>
+                        </div>
+
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px">
+                            <!-- <legend>分割线</legend> -->
+                        </fieldset>
+
+                        <div class="layui-form-item">
+                            <div class="layui-form-item layui-form-text">
+                                <label class="layui-form-label">sql语句查询：</label> 可使用的表：worry（工单主表），worry_item（工单属性表），stream（工单流水表）
+                                <div class="layui-input-block">
+                                    <textarea placeholder="请输入sql语句" name="sql" class="layui-textarea" style="width: 840px"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item" style="text-align: right; margin-right: 50px">
+                            <button class="layui-btn ultra-btn-small ultra-btn-blue layui-btn-radius" lay-submit="" lay-filter="searchListFilter">
+                            查询
+                        </button>
+                            <button type="reset" class="layui-btn ultra-btn-small ultra-btn-default layui-btn-radius">
+                            重置
+                        </button>
+                        </div>
+                    </form>
+
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px">
+                        <legend>分割线</legend>
+                    </fieldset>
+
+                    <div class="layui-collapse" lay-accordion="">
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">展开表结构</h2>
+                            <div class="layui-colla-content">
+                                <div class="layui-collapse" lay-accordion="">
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title">c_worry（工单主表）</h2>
+                                        <div class="layui-colla-content">
+                                            <table class="layui-table">
+                                                <colgroup>
+                                                    <col width="150" />
+                                                    <col width="200" />
+                                                    <col/>
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>字段名</th>
+                                                        <th>字段类型</th>
+                                                        <th>字段描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>processId</td>
+                                                        <td>int(11)</td>
+                                                        <td>工单ID</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>processKey</td>
+                                                        <td>varchar(45)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>processTitle</td>
+                                                        <td>varchar(5000)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>createTime</td>
+                                                        <td>datetime</td>
+                                                        <td>创建时间</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>creatorRegion</td>
+                                                        <td>varchar(45)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>content</td>
+                                                        <td>longtext</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>lastTime</td>
+                                                        <td>datetime</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title">
+                                            d_worry_item（工单属性表）
+                                        </h2>
+                                        <div class="layui-colla-content">
+                                            <table class="layui-table">
+                                                <colgroup>
+                                                    <col width="150" />
+                                                    <col width="200" />
+                                                    <col/>
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>字段名</th>
+                                                        <th>字段类型</th>
+                                                        <th>字段描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>processId</td>
+                                                        <td>int(11)</td>
+                                                        <td>工单ID</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>categorytype</td>
+                                                        <td>int(11)</td>
+                                                        <td>分类</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>truecategory</td>
+                                                        <td>int(11)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>firstLucky</td>
+                                                        <td>varchar(45)</td>
+                                                        <td>处理人</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>processStatus</td>
+                                                        <td>int(11)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>lastTime</td>
+                                                        <td>datetime</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>superCategory</td>
+                                                        <td>int(11)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>remarks</td>
+                                                        <td>varchar(5000)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>menu</td>
+                                                        <td>int(11)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>location</td>
+                                                        <td>int(11)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title">
+                                            c_worry_stream（工单流水表）
+                                        </h2>
+                                        <div class="layui-colla-content">
+                                            <table class="layui-table">
+                                                <colgroup>
+                                                    <col width="150" />
+                                                    <col width="200" />
+                                                    <col/>
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th>字段名</th>
+                                                        <th>字段类型</th>
+                                                        <th>字段描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>streamId</td>
+                                                        <td>int(11)</td>
+                                                        <td>流水ID</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>categorytype</td>
+                                                        <td>int(11)</td>
+                                                        <td>分类</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>processId</td>
+                                                        <td>int(11)</td>
+                                                        <td>工单ID</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>processKey</td>
+                                                        <td>varchar(45)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>handlename</td>
+                                                        <td>int(11)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>department1</td>
+                                                        <td>varchar(45)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>department2</td>
+                                                        <td>varchar(45)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>department3</td>
+                                                        <td>varchar(45)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>username</td>
+                                                        <td>varchar(45)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>usernick</td>
+                                                        <td>varchar(45)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>luckyname</td>
+                                                        <td>varchar(45)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>luckynick</td>
+                                                        <td>varchar(45)</td>
+                                                        <td></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>start_date</td>
+                                                        <td>datetime</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>answer</td>
+                                                        <td>varchar(5000)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>end_date</td>
+                                                        <td>datetime</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>lastTime</td>
+                                                        <td>datetime</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="layui/layui.js" charset="utf-8"></script>
+    <script>
+        let urlticket = getQueryString("ticket");
+        var opentag = 0;
+        layui.use(
+            ["form", "layedit", "laydate", "element", "layer", "jquery"],
+            function() {
+                var $;
+                $ = layui.$;
+
+                var form = layui.form,
+                    layer = layui.layer,
+                    layedit = layui.layedit,
+                    laydate = layui.laydate;
+                $.post('catchsupcat?type=st',
+                    function(data) {
+                        supcatype = data.data;
+                        var supselect = $("#supercategory");
+                        for (var i = 0; i < supcatype.length; i++) {
+                            supselect.append("<option value=" + supcatype[i].cat + ">" + supcatype[i].catname + "</option>");
+                        }
+                        form.render("select");
+                    });
+                $.post('catchsupcat?type=ht',
+                    function(data) {
+                        supcatype = data.data;
+                        var supselect = $("#handlename");
+                        for (var i = 0; i < supcatype.length; i++) {
+                            supselect.append("<option value=" + supcatype[i].cat + ">" + supcatype[i].catname + "</option>");
+                        }
+                        form.render("select");
+                    });
+                laydate.render({
+                    elem: "#time",
+                    type: "date",
+                    range: true,
+                });
+                laydate.render({
+                    elem: "#handletime",
+                    type: "date",
+                    range: true,
+                });
+                // form.on("submit(searchListFilter)", function (data) {
+                //   var jsondata = data.field;
+                // });
+
+                var element = layui.element;
+                var layer = layui.layer;
+                if (urlticket != null) {
+                    $("#href_worrylist").attr("href", "./worrylist.html?ticket=" + urlticket);
+                    $('#href_analysis').attr("href", "./analysis.html?ticket=" + urlticket);
+                    $("#href_similarworry").attr("href", "./similarworry.html?ticket=" + urlticket);
+                    $("#form_search").attr("action", "worryarr/aoegetworry?ticket=" + urlticket);
+                    if (opentag == 0) {
+                        layer.open({
+                            type: 1,
+                            content: '当前搜索会再上一次搜索结果中进行搜索。',
+                            title: "提示",
+                            anim: 4,
+                            offset: 'auto',
+                            shade: [0.1, '#009688'],
+                            shadeClose: true,
+                            btn: ["继续在本页", "开启新的搜索"],
+                            yes: function(index, layero) {
+                                layer.close(index);
+
+                            },
+                            btn2: function(index, layero) {
+                                window.location.href = "./search.html";
+                                layer.close(index);
+                            }
+                        });
+                        opentag++;
+                    }
+                }
+
+                //监听折叠
+            }
+        );
+
+        function getQueryString(name) {
+            let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            let r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return decodeURIComponent(r[2]);
+            }
+            return null;
+        }
+
+        function watchtable() {}
+    </script>
+</body>
+
+</html>

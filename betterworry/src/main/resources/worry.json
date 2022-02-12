@@ -1,0 +1,724 @@
+{
+	"user": [
+		{
+			"username": "heyw15",
+			"password": "Computer@786710"
+		},
+		{
+			"username": "zhangl909",
+			"password": ""
+		},
+		{
+			"username": "lim166",
+			"password": "14242719980822Mj#"
+		},
+		{
+			"username": "zhangjp213",
+			"password": "Zhangjinpeng0412"
+		},
+		{
+			"username": "lin90",
+			"password": ""
+		},
+		{
+			"username": "zhoucq21",
+			"password": "ZCQzcq_18651882442"
+		}
+	,
+		{
+			"username": "liur178",
+			"password": ""
+		}
+	,
+		{
+			"username": "niuwj15",
+			"password": ""
+		},
+		{
+			"username": "songtt16",
+			"password": "070121sttSTT��"
+		},
+		{
+			"username": "huangz32",
+			"password": "��Zwj1997425"
+		},
+		{
+			"username": "lingch1",
+			"password": "@896807L6l"
+		},
+		{
+			"username": "chenzm75",
+			"password": ""
+		},
+		{
+			"username": "xuk31",
+			"password": ""
+		},{
+			"username": "wangdp86",
+			"password": ""
+		},{
+			"username": "xiedm15",
+			"password": ""
+		}
+	],
+	"department": [
+		{
+			"name": "department",
+			"No": "2"
+		}
+	],
+	"area": [
+		{
+			"Province": "江苏省"
+		},
+		{
+			"Province": "浙江省"
+		},
+		{
+			"Province": "安徽省"
+		},
+		{
+			"Province": "福建省"
+		},
+		{
+			"Province": "江西省"
+		},
+		{
+			"Province": "上海市"
+		},
+		{
+			"Province": "天津市"
+		},
+		{
+			"Province": "河北省"
+		},
+		{
+			"Province": "山西省"
+		},
+		{
+			"Province": "内蒙古自治区"
+		},
+		{
+			"Province": "辽宁省"
+		},
+		{
+			"Province": "吉林省"
+		},
+		{
+			"Province": "黑龙江省"
+		},
+		{
+			"Province": "山东省"
+		},
+		{
+			"Province": "河南省"
+		},
+		{
+			"Province": "湖北省"
+		},
+		{
+			"Province": "湖南省"
+		},
+		{
+			"Province": "广东省"
+		},
+		{
+			"Province": "广西壮族自治区"
+		},
+		{
+			"Province": "甘肃省"
+		},
+		{
+			"Province": "陕西省"
+		},
+		{
+			"Province": "新疆维吾尔自治区"
+		},
+		{
+			"Province": "青海省"
+		},
+		{
+			"Province": "宁夏回族自治区"
+		},
+		{
+			"Province": "重庆市"
+		},
+		{
+			"Province": "四川省"
+		},
+		{
+			"Province": "贵州省"
+		},
+		{
+			"Province": "云南省"
+		},
+		{
+			"Province": "西藏自治区"
+		},
+		{
+			"Province": "北京市"
+		}
+	],
+	"WebconnectShit": [
+		{
+			"No": "-2",
+			"msg": "服务器连接失败,可能是密码错误"
+		},
+		{
+			"No": "-1",
+			"msg": "服务器传输数据异常，服务器宕机或者服务异常"
+		},
+		{
+			"No": "0",
+			"msg": "连接异常,网络断开或者访问服务不存在。"
+		}
+	],
+	"baseinfo":
+	[
+		{
+			"categorytype" : 1,
+			"categoryname" : "需求类问题",
+			"categorytag" : "ct"
+		},
+		{
+			"categorytype" : 2,
+			"categoryname" : "程序BUG问题",
+			"categorytag" : "ct"
+		},
+		{
+			"categorytype" : 3,
+			"categoryname" : "投诉建议",
+			"categorytag" : "ct"
+		},
+		{
+			"categorytype" : 4,
+			"categoryname" : "数据修复类问题",
+			"categorytag" : "ct"
+		},
+		{
+			"categorytype" : 5,
+			"categoryname" : "操作类问题",
+			"categorytag" : "ct"
+		},
+		{
+			"categorytype" : 6,
+			"categoryname" : "平台类问题",
+			"categorytag" : "ct"
+		},
+		{
+			"categorytype" : 7,
+			"categoryname" : "重复、无效工单",
+			"categorytag" : "ct"
+		},
+		{
+			"categorytype" : 8,
+			"categoryname" : "参数配置问题",
+			"categorytag" : "ct"
+		},
+		{
+			"categorytype" : 9,
+			"categoryname" : "核查类问题",
+			"categorytag" : "ct"
+		},
+		{
+			"categorytype" : 10,
+			"categoryname" : "咨询类问题",
+			"categorytag" : "ct"
+		},
+		{
+			"categorytype" : 11,
+			"categoryname" : "未知问题",
+			"categorytag" : "ct"
+		},
+		{
+			"categorytype" : 15,
+			"categoryname" : "非b域问题",
+			"categorytag" : "ct"
+		},
+		{
+			"categorytype" : 101,
+			"categoryname" : "固网问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 103,
+			"categoryname" : "欠费问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 104,
+			"categoryname" : "客户数据问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 105,
+			"categoryname" : "产品问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 106,
+			"categoryname" : "报表问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 107,
+			"categoryname" : "系统环境问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 108,
+			"categoryname" : "号卡问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 109,
+			"categoryname" : "用户数据问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 111,
+			"categoryname" : "订单问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 113,
+			"categoryname" : "电子券类问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 114,
+			"categoryname" : "计费问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 115,
+			"categoryname" : "权限问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 118,
+			"categoryname" : "批量问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 127,
+			"categoryname" : "拍照问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 129,
+			"categoryname" : "信控问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 130,
+			"categoryname" : "自然人问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 131,
+			"categoryname" : "终端问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 132,
+			"categoryname" : "作废单问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 133,
+			"categoryname" : "违约金问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 134,
+			"categoryname" : "esim问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 137,
+			"categoryname" : "发票问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 138,
+			"categoryname" : "优化类问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 139,
+			"categoryname" : "融合问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 141,
+			"categoryname" : "代扣问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 143,
+			"categoryname" : "销户问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 154,
+			"categoryname" : "报竣问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 157,
+			"categoryname" : "积分问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 158,
+			"categoryname" : "亲情业务问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 161,
+			"categoryname" : "在途单问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 176,
+			"categoryname" : "外围问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 180,
+			"categoryname" : "账务问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 183,
+			"categoryname" : "参数配置问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 185,
+			"categoryname" : "IOM问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 186,
+			"categoryname" : "一号多卡问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 189,
+			"categoryname" : "无纸化问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 195,
+			"categoryname" : "主副卡问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 207,
+			"categoryname" : "短信问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 210,
+			"categoryname" : "号码激活问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 225,
+			"categoryname" : "集团业务问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 231,
+			"categoryname" : "路由问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 232,
+			"categoryname" : "携转问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 234,
+			"categoryname" : "迁转数据问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 245,
+			"categoryname" : "沃受理问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 247,
+			"categoryname" : "交换侧问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 256,
+			"categoryname" : "mispos类问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 265,
+			"categoryname" : "新架构问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 278,
+			"categoryname" : "失败单问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 280,
+			"categoryname" : "钱款问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 283,
+			"categoryname" : "合约金问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 289,
+			"categoryname" : "业务规则类问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 294,
+			"categoryname" : "集团资料问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 305,
+			"categoryname" : "一证五户问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 312,
+			"categoryname" : "网厅问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 315,
+			"categoryname" : "环境问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 316,
+			"categoryname" : "补换卡问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 317,
+			"categoryname" : "红包中心问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 322,
+			"categoryname" : "黑名单问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 324,
+			"categoryname" : "新老架构数据问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 325,
+			"categoryname" : "开户问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 343,
+			"categoryname" : "核查问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 344,
+			"categoryname" : "活动中心问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 351,
+			"categoryname" : "复装问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 352,
+			"categoryname" : "一卡充问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 353,
+			"categoryname" : "生僻字问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 357,
+			"categoryname" : "流量问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 365,
+			"categoryname" : "虚拟网问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 367,
+			"categoryname" : "省分问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 376,
+			"categoryname" : "靓号问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 382,
+			"categoryname" : "手厅类问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 387,
+			"categoryname" : "营账数据不一致问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 394,
+			"categoryname" : "账户数据问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 396,
+			"categoryname" : "码上购问题",
+			"categorytag" : "st"
+		},
+		{
+			"categorytype" : 1001,
+			"categoryname" : "发布",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1002,
+			"categoryname" : "内容补充",
+			"categorytag" : "ht"
+		},
+		{
+		"categorytype" : 1003,
+		"categoryname" : "重新发布",
+		"categorytag" : "ht"
+	},
+		{
+			"categorytype" : 1011,
+			"categoryname" : "认领",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1021,
+			"categoryname" : "转发他人",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1022,
+			"categoryname" : "转发专业",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1023,
+			"categoryname" : "转发团队",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1024,
+			"categoryname" : "转发TFS",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1025,
+			"categoryname" : "重新转发TFS",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1031,
+			"categoryname" : "互助回复",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1032,
+			"categoryname" : "回答",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1033,
+			"categoryname" : "省分内容补充",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1034,
+			"categoryname" : "补充回复",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1035,
+			"categoryname" : "TFS问题分析",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1036,
+			"categoryname" : "专家普通回复",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1037,
+			"categoryname" : "专家作为解决方案回复",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1038,
+			"categoryname" : "专家阶段性回复",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1041,
+			"categoryname" : "省分日志",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1043,
+			"categoryname" : "TFS日志",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1051,
+			"categoryname" : "回退",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1052,
+			"categoryname" : "省分回退",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1053,
+			"categoryname" : "回退处理人",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1054,
+			"categoryname" : "回退发起人",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1061,
+			"categoryname" : "关单",
+			"categorytag" : "ht"
+		},
+		{
+			"categorytype" : 1062,
+			"categoryname" : "省分关单",
+			"categorytag" : "ht"
+		}
+	]
+}

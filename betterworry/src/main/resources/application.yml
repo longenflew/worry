@@ -1,0 +1,45 @@
+server:
+  servlet:
+    context-path: /betterworry
+  tomcat:
+    threads:
+      max: 100
+  port: 8000
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #url: jdbc:mysql://10.242.33.122:50019/work?serverTimezone=UTC&useunicode=true&characterEncoding=utf8\
+    url: jdbc:mysql://192.168.64.7:3306/work?serverTimezone=Asia/Shanghai
+    username: order
+    password: order
+  data:
+    mongodb:
+      host: 10.242.37.152
+      port: 27017
+      database: "long"
+      option:
+        max-connection-idle-time: 60000
+  task:
+    execution:
+      pool:
+        max-size: 16
+        queue-capacity: 100
+        keep-alive: "10s"
+c3p0:
+  acquireIncrement: 3
+  acquireRetryAttempts: 30
+  acquireRetryDelay: 1000
+  breakAfterAcquireFailure: false
+  driverClass: com.mysql.jdbc.Driver
+  idleConnectionTestPeriod: 60
+  initialPoolSize: 3
+  #jdbcUrl: jdbc:mysql://10.242.33.122:50019/work?serverTimezone=Asia/Shanghai
+  jdbcUrl: jdbc:mysql://192.168.64.7:3306/work?serverTimezone=Asia/Shanghai
+  maxIdleTime: 300
+  maxPoolSize: 100
+  maxStatements: 1000
+  minPoolSize: 2
+  password: order
+  testConnectionOnCheckout: false
+  user: order
+
